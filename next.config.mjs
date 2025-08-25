@@ -3,6 +3,7 @@ const nextConfig = {
   basePath: process.env.NODE_ENV === "production" ? "/portfolio" : "",
   output: process.env.NODE_ENV === "production" ? "export" : undefined,
   trailingSlash: process.env.NODE_ENV === "production",
+  assetPrefix: process.env.NODE_ENV === "production" ? "/portfolio" : "",
   images: {
     remotePatterns: [
       {
