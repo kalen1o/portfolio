@@ -1,6 +1,8 @@
-/** @type {import('next').NextConfig} */
+/** @type {import('next').Config} */
 const nextConfig = {
-  basePath: "/portfolio",
+  basePath: process.env.NODE_ENV === "production" ? "/portfolio" : "",
+  output: process.env.NODE_ENV === "production" ? "export" : undefined,
+  trailingSlash: process.env.NODE_ENV === "production",
   images: {
     remotePatterns: [
       {
@@ -8,6 +10,7 @@ const nextConfig = {
         hostname: "images.pexels.com",
       },
     ],
+    unoptimized: process.env.NODE_ENV === "production",
   },
 };
 
