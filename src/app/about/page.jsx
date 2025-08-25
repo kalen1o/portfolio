@@ -90,21 +90,33 @@ const AboutPage = () => {
                             animate={isSkillRefInView ? { x: 0 } : {}}
                             className="flex gap-4 flex-wrap"
                         >
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">HTML</div>
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">CSS / SCSS / SASS</div>
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">JavaScript</div>
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">TypeScript</div>
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">ReactJS</div>
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">NextJS</div>
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">Redux / Redux Toolkit</div>
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">Tailwind CSS</div>
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">jQuery</div>
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">Git</div>
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">Bootstrap</div>
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">Webpack</div>
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">Babel</div>
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">Axios</div>
-                            <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">Lerna</div>
+                            {[
+                                { label: "HTML", href: "https://developer.mozilla.org/docs/Web/HTML" },
+                                { label: "CSS / SCSS / SASS", href: "https://developer.mozilla.org/docs/Web/CSS" },
+                                { label: "JavaScript", href: "https://developer.mozilla.org/docs/Web/JavaScript" },
+                                { label: "TypeScript", href: "https://www.typescriptlang.org/docs/" },
+                                { label: "ReactJS", href: "https://react.dev/learn" },
+                                { label: "NextJS", href: "https://nextjs.org/docs" },
+                                { label: "Redux / Redux Toolkit", href: "https://redux-toolkit.js.org/" },
+                                { label: "Tailwind CSS", href: "https://tailwindcss.com/docs" },
+                                { label: "jQuery", href: "https://api.jquery.com/" },
+                                { label: "Git", href: "https://git-scm.com/doc" },
+                                { label: "Bootstrap", href: "https://getbootstrap.com/docs/" },
+                                { label: "Webpack", href: "https://webpack.js.org/concepts/" },
+                                { label: "Babel", href: "https://babeljs.io/docs" },
+                                { label: "Axios", href: "https://axios-http.com/docs/intro" },
+                                { label: "Lerna", href: "https://lerna.js.org/docs" }
+                            ].map((skill) => (
+                                <a
+                                    key={skill.label}
+                                    href={skill.href}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black"
+                                >
+                                    {skill.label}
+                                </a>
+                            ))}
                         </motion.div>
                         {/* SKILL SCROLL SVG */}
                         <motion.svg
