@@ -9,7 +9,7 @@ const ContactPage = () => {
     const buildMailtoHref = (message, email) => {
         const subject = encodeURIComponent("Portfolio Contact");
         const body = encodeURIComponent(`${message}\n\nFrom: ${email}`);
-        return `mailto:trantienquang101198@gmail.com?subject=${subject}&body=${body}`;
+        return `mailto:ngungonngon@gmail.com?subject=${subject}&body=${body}`;
     };
 
     return (
@@ -54,7 +54,7 @@ const ContactPage = () => {
                     }}
                     className="h-1/2 lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-8 justify-center p-24"
                 >
-                    <span>Dear kalen_1o,</span>
+                    <span>Dear Quang,</span>
                     <textarea
                         rows={6}
                         className="bg-transparent border-b-2 border-b-black outline-none resize-none"

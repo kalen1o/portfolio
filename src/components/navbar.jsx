@@ -86,6 +86,12 @@ const Navbar = () => {
                 <Link href="https://www.linkedin.com/in/kalen1o/">
                     <Image src={getImagePath("/linkedin.png")} alt="" width={24} height={24} />
                 </Link>
+                <Link href="https://www.facebook.com/kalen1o">
+                    <Image src={getImagePath("/facebook.png")} alt="" width={24} height={24} />
+                </Link>
+                <Link href="https://www.instagram.com/kalen_1o/">
+                    <Image src={getImagePath("/instagram.png")} alt="" width={24} height={24} />
+                </Link>
             </div>
             {/* RESPONSIVE MENU */}
             <div className="md:hidden">
