@@ -9,16 +9,7 @@ export const getImagePath = (imageName) => {
   
   const finalPath = `${basePath}${normalizedImageName}`;
   
-  // Debug logging
-  if (typeof window !== 'undefined') {
-    console.log('Image path debug:', {
-      imageName,
-      isProduction,
-      basePath,
-      finalPath,
-      nodeEnv: process.env.NODE_ENV
-    });
-  }
+
   
   return finalPath;
 };

@@ -3,8 +3,19 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { getImagePath } from "@/utils/imagePath";
+import { useRouter } from "next/navigation";
 
 const Homepage = () => {
+    const router = useRouter();
+
+    const handleViewMyWork = () => {
+        router.push("/portfolio");
+    };
+
+    const handleContactMe = () => {
+        router.push("/contact");
+    };
+
     return (
         <motion.div
             className="h-full"
@@ -32,10 +43,10 @@ const Homepage = () => {
                     </p>
                     {/* BUTTONS */}
                     <div className="w-full flex gap-4">
-                        <button className="p-4 rounded-lg ring-1 ring-black bg-black text-white">
+                        <button onClick={handleViewMyWork} className="p-4 rounded-lg ring-1 ring-black bg-black text-white">
                             View My Work
                         </button>
-                        <button className="p-4 rounded-lg ring-1 ring-black">
+                        <button onClick={handleContactMe} className="p-4 rounded-lg ring-1 ring-black">
                             Contact Me
                         </button>
                     </div>
