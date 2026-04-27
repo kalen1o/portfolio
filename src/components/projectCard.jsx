@@ -74,10 +74,15 @@ const ProjectCard = ({ project }) => {
                 {/* LINK */}
                 {project.links?.live && (
                     <div className="flex justify-end">
-                        <Link href={project.links.live} target="_blank" rel="noreferrer">
-                            <button className="p-3 lg:p-4 bg-gray-900 text-white font-semibold rounded shadow hover:bg-gray-700 transition-colors">
+                        <Link
+                            href={project.links.live}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 rounded"
+                        >
+                            <span className="block p-3 lg:p-4 bg-gray-900 text-white font-semibold rounded shadow hover:bg-gray-700 transition-colors">
                                 See Live →
-                            </button>
+                            </span>
                         </Link>
                     </div>
                 )}

@@ -11,7 +11,7 @@ const SkillGroup = ({ group, items }) => {
                         href={skill.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black border border-black transition-colors"
+                        className="rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black border border-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
                     >
                         {skill.label}
                     </a>

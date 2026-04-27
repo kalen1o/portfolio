@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { profile } from "@/data/profile";
 
 const ContactPage = () => {
     const [success, setSuccess] = useState(false);
@@ -9,8 +10,22 @@ const ContactPage = () => {
     const buildMailtoHref = (message, email) => {
         const subject = encodeURIComponent("Portfolio Contact");
         const body = encodeURIComponent(`${message}\n\nFrom: ${email}`);
-        return `mailto:ngungonngon@gmail.com?subject=${subject}&body=${body}`;
+        return `mailto:${profile.contact.email}?subject=${subject}&body=${body}`;
     };
+
+    // Auto-clear success after 5s
+    useEffect(() => {
+        if (!success) return;
+        const t = setTimeout(() => setSuccess(false), 5000);
+        return () => clearTimeout(t);
+    }, [success]);
+
+    const dismissSuccess = () => {
+        if (success) setSuccess(false);
+    };
+
+    const inputClass =
+        "bg-white rounded border-2 border-black p-3 outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 text-base";
 
     return (
         <motion.div
@@ -21,7 +36,7 @@ const ContactPage = () => {
         >
             <div className="h-full flex flex-col lg:flex-row px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48">
                 {/* TEXT CONTAINER */}
-                <div className="h-1/2 lg:h-full lg:w-1/2 flex items-center justify-center text-6xl">
+                <div className="h-1/2 lg:h-full lg:w-1/2 flex items-center justify-center text-4xl md:text-5xl lg:text-6xl">
                     <div>
                         {text.split("").map((letter, index) => (
                             <motion.span
@@ -37,7 +52,6 @@ const ContactPage = () => {
                                 {letter}
                             </motion.span>
                         ))}
-                        😊
                     </div>
                 </div>
                 {/* FORM CONTAINER */}
@@ -52,29 +66,57 @@ const ContactPage = () => {
                         setSuccess(true);
                         e.currentTarget.reset();
                     }}
-                    className="h-1/2 lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-8 justify-center p-24"
+                    className="h-1/2 lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-base md:text-lg flex flex-col gap-5 justify-center p-6 sm:p-8 md:p-12 lg:p-16"
                 >
-                    <span>Dear Visitor,</span>
-                    <textarea
-                        rows={6}
-                        className="bg-transparent border-b-2 border-b-black outline-none resize-none"
-                        name="user_message"
-                    />
-                    <span>My mail address is:</span>
-                    <input
-                        name="user_email"
-                        type="text"
-                        className="bg-transparent border-b-2 border-b-black outline-none"
-                    />
-                    <span>Regards</span>
-                    <button className="bg-purple-200 rounded font-semibold text-gray-600 p-4">
+                    <p className="font-semibold text-lg md:text-xl">Dear Visitor,</p>
+
+                    <div className="flex flex-col gap-2">
+                        <label htmlFor="user_message" className="text-sm font-medium text-gray-700">
+                            Your message <span className="text-red-500" aria-hidden="true">*</span>
+                            <span className="sr-only">(required)</span>
+                        </label>
+                        <textarea
+                            id="user_message"
+                            name="user_message"
+                            rows={6}
+                            required
+                            placeholder="Hi Quang, I'd like to talk about..."
+                            onChange={dismissSuccess}
+                            className={`${inputClass} resize-none`}
+                        />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                        <label htmlFor="user_email" className="text-sm font-medium text-gray-700">
+                            Your email <span className="text-red-500" aria-hidden="true">*</span>
+                            <span className="sr-only">(required)</span>
+                        </label>
+                        <input
+                            id="user_email"
+                            name="user_email"
+                            type="email"
+                            required
+                            autoComplete="email"
+                            placeholder="you@example.com"
+                            onChange={dismissSuccess}
+                            className={inputClass}
+                        />
+                    </div>
+
+                    <button
+                        type="submit"
+                        className="bg-purple-200 rounded font-semibold text-gray-900 p-4 hover:bg-purple-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2"
+                    >
                         Send
                     </button>
-                    {success && (
-                        <span className="text-green-600 font-semibold">
-                            Your email client should open with a draft now.
-                        </span>
-                    )}
+
+                    <div role="status" aria-live="polite" className="min-h-[1.5rem]">
+                        {success && (
+                            <span className="text-green-700 font-semibold">
+                                Your email client should open with a draft now.
+                            </span>
+                        )}
+                    </div>
                 </form>
             </div>
         </motion.div>

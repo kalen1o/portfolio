@@ -10,6 +10,12 @@ export const metadata = {
     "Full-stack engineer (5+ yrs). Java / Spring Boot · React / Next.js. Currently building Vietnam's Booking.com / Agoda equivalent. Previously NAVER, Cốc Cốc, Appota.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
