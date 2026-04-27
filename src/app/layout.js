@@ -5,8 +5,9 @@ import TransitionProvider from "@/components/transitionProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "kalen_1o Portfolio",
-  description: "The best animated portfolio page",
+  title: "Tran Tien Quang — Full-Stack Engineer",
+  description:
+    "Full-stack engineer (5+ yrs). Java / Spring Boot · React / Next.js. Currently building Vietnam's Booking.com / Agoda equivalent. Previously NAVER, Cốc Cốc, Appota.",
 };
 
 export default function RootLayout({ children }) {

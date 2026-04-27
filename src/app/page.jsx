@@ -4,17 +4,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { getImagePath } from "@/utils/imagePath";
 import { useRouter } from "next/navigation";
+import { profile } from "@/data/profile";
 
 const Homepage = () => {
     const router = useRouter();
-
-    const handleViewMyWork = () => {
-        router.push("/portfolio");
-    };
-
-    const handleContactMe = () => {
-        router.push("/contact");
-    };
 
     return (
         <motion.div
@@ -29,23 +22,22 @@ const Homepage = () => {
                     <Image src={getImagePath("/hero.png")} alt="" fill className="object-contain" />
                 </div>
                 {/* TEXT CONTAINER */}
-                <div className="h-1/2 lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center">
-                    {/* TITLE */}
-                    <h1 className="text-4xl md:text-6xl font-bold">
-                        Tran Tien Quang — Front‑end Developer
-                    </h1>
-                    {/* DESC */}
-                    <p className="md:text-xl">
-                        Born in Ukraine and of Vietnamese origin, I build performant,
-                        responsive user interfaces with ReactJS and Next.js. I value
-                        perseverance, craftsmanship, and pixel‑perfect detail.
-                    </p>
-                    {/* BUTTONS */}
-                    <div className="w-full flex gap-4">
-                        <button onClick={handleViewMyWork} className="p-4 rounded-lg ring-1 ring-black bg-black text-white">
+                <div className="h-1/2 lg:h-full lg:w-1/2 flex flex-col gap-6 items-start justify-center">
+                    <h1 className="text-3xl md:text-5xl font-bold">{profile.name}</h1>
+                    <h2 className="text-lg md:text-2xl text-gray-700">{profile.title}</h2>
+                    <p className="md:text-lg">{profile.hero.summary}</p>
+                    <p className="md:text-base italic text-gray-600">{profile.hero.origin}</p>
+                    <div className="w-full flex flex-wrap gap-3">
+                        <button
+                            onClick={() => router.push("/portfolio")}
+                            className="p-4 rounded-lg ring-1 ring-black bg-black text-white"
+                        >
                             View My Work
                         </button>
-                        <button onClick={handleContactMe} className="p-4 rounded-lg ring-1 ring-black">
+                        <button
+                            onClick={() => router.push("/contact")}
+                            className="p-4 rounded-lg ring-1 ring-black"
+                        >
                             Contact Me
                         </button>
                     </div>

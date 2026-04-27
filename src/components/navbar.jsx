@@ -79,19 +79,23 @@ const Navbar = () => {
             </div>
 
             {/* SOCIAL */}
-            <div className="hidden md:flex gap-4">
-                <Link href="https://github.com/kalen1o">
-                    <Image src={getImagePath("/github.png")} alt="" width={24} height={24} />
+            <div className="hidden md:flex gap-4 items-center">
+                <Link href="https://github.com/kalen1o" target="_blank" rel="noreferrer" aria-label="GitHub">
+                    <Image src={getImagePath("/github.png")} alt="GitHub" width={24} height={24} />
                 </Link>
-                <Link href="https://www.linkedin.com/in/kalen1o/">
-                    <Image src={getImagePath("/linkedin.png")} alt="" width={24} height={24} />
+                <Link href="https://www.linkedin.com/in/kalen1o/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                    <Image src={getImagePath("/linkedin.png")} alt="LinkedIn" width={24} height={24} />
                 </Link>
-                <Link href="https://www.facebook.com/kalen1o">
-                    <Image src={getImagePath("/facebook.png")} alt="" width={24} height={24} />
-                </Link>
-                <Link href="https://www.instagram.com/kalen_1o/">
-                    <Image src={getImagePath("/instagram.png")} alt="" width={24} height={24} />
-                </Link>
+                <a
+                    href="mailto:trantienquang101198@gmail.com"
+                    aria-label="Email"
+                    className="w-6 h-6 flex items-center justify-center"
+                >
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="m22 7-10 5L2 7" />
+                    </svg>
+                </a>
             </div>
             {/* RESPONSIVE MENU */}
             <div className="md:hidden">

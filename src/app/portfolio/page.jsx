@@ -1,49 +1,14 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-
-const items = [
-    {
-        id: 1,
-        color: "from-red-300 to-blue-300",
-        title: "QR Platform (NAVER)",
-        desc: "Built from scratch. Implemented create/edit/delete/view for QR, media upload (video & images), players, map, CDN integration, social sharing and reports.",
-        img: "/dribbble.png",
-        link: "https://www.naver.com/",
-    },
-    {
-        id: 2,
-        color: "from-blue-300 to-violet-300",
-        title: "Cốc Cốc New Tab (Mobile)",
-        desc: "Maintainer for iOS & Android New Tab. Integrated and optimized ads (VAST/VPAID), delivered responsive pixel‑perfect UI and strong performance.",
-        img: "/instagram.png",
-        link: "https://coccoc.com/",
-    },
-    {
-        id: 3,
-        color: "from-violet-300 to-purple-300",
-        title: "Cốc Cốc Map",
-        desc: "Led flow, development and performance improvements for the map experience across the product.",
-        img: "/pinterest.png",
-        link: "https://map.coccoc.com/",
-    },
-    {
-        id: 4,
-        color: "from-purple-300 to-red-300",
-        title: "WiFi Cafe Suite (Appota)",
-        desc: "Maintainer of responsive WiFi Cafe apps and CMS dashboards with charts and forms; SSR product management app; info & pricing tables.",
-        img: "/facebook.png",
-        link: "https://appota.com/",
-    },
-];
+import ProjectCard from "@/components/projectCard";
+import { projects } from "@/data/projects";
 
 const PortfolioPage = () => {
     const ref = useRef();
-
     const { scrollYProgress } = useScroll({ target: ref });
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-87%"]);
 
     return (
         <motion.div
@@ -52,33 +17,14 @@ const PortfolioPage = () => {
             animate={{ y: "0%" }}
             transition={{ duration: 1 }}
         >
-            <div className="h-[600vh] relative" ref={ref}>
+            <div className="h-[900vh] relative" ref={ref}>
                 <div className="w-screen h-[calc(100vh-6rem)] flex items-center justify-center text-8xl text-center">
                     My Works
                 </div>
                 <div className="sticky top-0 flex h-screen gap-4 items-center overflow-hidden">
                     <motion.div style={{ x }} className="flex">
-                        <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-r from-purple-300 to-red-300" />
-                        {items.map((item) => (
-                            <div
-                                className={`h-screen w-screen flex items-center justify-center bg-gradient-to-r ${item.color}`}
-                                key={item.id}
-                            >
-                                <div className="flex flex-col gap-8 text-white">
-                                    <h1 className="text-xl font-bold md:text-4xl lg:text-6xl xl:text-8xl">
-                                        {item.title}
-                                    </h1>
-                                    <div className="relative w-80 h-56 md:w-96 md:h-64 lg:w-[500px] lg:h-[350px] xl:w-[600px] xl:h-[420px]">
-                                        <Image src={item.img} alt="" fill />
-                                    </div>
-                                    <p className="w-80 md:w96 lg:w-[500px] lg:text-lg xl:w-[600px]">
-                                        {item.desc}
-                                    </p>
-                                    <Link href={item.link} className="flex justify-end">
-                                        <button className="p-2 text-sm md:p-4 md:text-md lg:p-8 lg:text-lg bg-white text-gray-600 font-semibold m-4 rounded">See Demo</button>
-                                    </Link>
-                                </div>
-                            </div>
+                        {projects.map((project) => (
+                            <ProjectCard key={project.id} project={project} />
                         ))}
                     </motion.div>
                 </div>
@@ -90,7 +36,7 @@ const PortfolioPage = () => {
                         animate={{ rotate: 360 }}
                         transition={{ duration: 8, ease: "linear", repeat: Infinity }}
                         viewBox="0 0 300 300"
-                        className="w-64 h-64 md:w-[500px] md:h-[500px] "
+                        className="w-64 h-64 md:w-[500px] md:h-[500px]"
                     >
                         <defs>
                             <path
@@ -100,7 +46,7 @@ const PortfolioPage = () => {
                         </defs>
                         <text fill="#000">
                             <textPath xlinkHref="#circlePath" className="text-xl">
-                                Front-end Developer and UI Designer
+                                Full-Stack Engineer · Java · Spring Boot · React
                             </textPath>
                         </text>
                     </motion.svg>
