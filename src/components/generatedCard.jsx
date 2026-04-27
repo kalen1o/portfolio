@@ -5,11 +5,9 @@ import { getImagePath } from "@/utils/imagePath";
 
 const GeneratedCard = ({ project }) => {
     return (
-        <div
-            className={`w-full h-full bg-gradient-to-br ${project.gradient} rounded-lg flex flex-col items-center justify-center p-8 gap-6`}
-        >
+        <div className="w-full h-full bg-white rounded-lg shadow-lg border border-gray-200 flex flex-col items-center justify-center p-8 gap-5">
             {project.companyLogo && (
-                <div className="bg-white/80 rounded-full p-3">
+                <div className="rounded-full p-2 bg-gray-50 border border-gray-100">
                     <Image
                         src={getImagePath(project.companyLogo)}
                         alt={`${project.company} logo`}
@@ -19,17 +17,17 @@ const GeneratedCard = ({ project }) => {
                     />
                 </div>
             )}
-            <div className="text-center text-white drop-shadow">
-                <div className="text-sm uppercase tracking-wider opacity-90">
+            <div className="text-center">
+                <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">
                     {project.company}
                 </div>
-                <div className="text-2xl font-bold mt-1">{project.title}</div>
+                <div className="text-xl font-bold mt-1 text-gray-900">{project.title}</div>
             </div>
-            <div className="flex flex-wrap gap-2 justify-center max-w-md">
+            <div className="flex flex-wrap gap-1.5 justify-center max-w-md">
                 {project.stack.slice(0, 6).map((tech) => (
                     <span
                         key={tech}
-                        className="text-xs px-2 py-1 bg-white/30 text-white rounded backdrop-blur-sm"
+                        className="text-xs px-2 py-0.5 bg-gray-100 text-gray-700 rounded border border-gray-200"
                     >
                         {tech}
                     </span>

@@ -8,7 +8,11 @@ import { projects } from "@/data/projects";
 const PortfolioPage = () => {
     const ref = useRef();
     const { scrollYProgress } = useScroll({ target: ref });
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-87%"]);
+    // Container is h-[800vh]: 1vh hero + ~7vh of carousel scroll.
+    // Skip the hero portion (first 1/8 of progress) so the carousel
+    // doesn't start translating until the hero scrolls past.
+    // Translate from 0% to -85.71% (= 6/7) so the 7th card lands flush.
+    const x = useTransform(scrollYProgress, [0.125, 1], ["0%", "-85.71%"]);
 
     return (
         <motion.div
@@ -17,7 +21,7 @@ const PortfolioPage = () => {
             animate={{ y: "0%" }}
             transition={{ duration: 1 }}
         >
-            <div className="h-[900vh] relative" ref={ref}>
+            <div className="h-[800vh] relative" ref={ref}>
                 <div className="w-screen h-[calc(100vh-6rem)] flex items-center justify-center text-8xl text-center">
                     My Works
                 </div>
